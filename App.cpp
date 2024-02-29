@@ -7,7 +7,7 @@
 #include "./headers/loops.h"
 #include "./headers/Functions.h"
 #include "./headers/structs.h"
-#include "./headers/Circle.h"
+#include "./headers/Cylinder.h"
 
 // in C++ a namespace is a collection of related functions,
 // classes, objects and variables. 
@@ -138,9 +138,59 @@ int main()
     circle2.printCircle();
 
     // output if circle1 is equal o circle2 
-    std::boolalpha;
-    cout << "Circle 1 equal Circle 2? " << circle1.equalCircle(circle2) << endl;
+    cout << std::boolalpha << "Circle 1 equal Circle 2? " << circle1.equalCircle(circle2) << endl;
+
+    // declare and initialize a Cylinder object using the no-arg constructor
+    Cylinder cylinder1;
+    
+    // declare local variables that will be used when calling the cylinder's 
+    // getter methods
+    int h; 
+    double v;
+
+    // output the contents of cylinder1 to stdout
+    cout << "Cylinder 1: ";
+    cylinder1.printCylinder();
+
+    // set cylinder1's radius and compute its area
+    cylinder1.Circle::setRadius(5);
+    cylinder1.Circle::compute();
+
+    // output the contents of cylinder1 to stdout
+    cout << "Cylinder 1: ";
+    cylinder1.printCylinder();
+
+    // set cylinder1's height and compute its volume
+    cylinder1.setHeight(7);
+    cylinder1.compute();
+
+    // output the contents of cylinder1 to stdout
+    cout << "Cylinder 1: ";
+    cylinder1.printCylinder();
+
+    // call cylinder1's getter methods
+    cylinder1.getHeight(h);
+    cout << "Height 1: " << h << endl;
+    cylinder1.getVolume(v);
+    cout << "Volume 1: " << v << endl;
 
 
+    // declare and initialize another Cylinder using two-arg consturctor
+    Cylinder cylinder2(4,2);
+
+    // output the contents of cylinder1 to stdout
+    cout << "Cylinder 2: ";
+    cylinder2.printCylinder();
+
+    // compute cylinder2's area and volume 
+    cylinder2.Circle::compute();
+    cylinder2.compute();
+
+    // output the contents of cylinder2 to stdout
+    cout << "Cylinder 2: ";
+    cylinder2.printCylinder();
+
+    // output 
+    cout << "Cylinder 1 equal Cylinder 2? " << circle1.equalCircle(circle2) << std::boolalpha << endl;  
     return 0;
 }

@@ -39,10 +39,10 @@ class Cylinder : public Circle
 
             // check if we've been given an invalid height - less
             // than zero
-            if(height > 0)
+            if(height < 0)
             {
                 // throw an exception
-                throw invalid_argument("Radius must be greater than or equal to zero");
+                throw invalid_argument("Height must be greater than or equal to zero");
             }
 
             // initialize fields using provided arguments
@@ -55,10 +55,10 @@ class Cylinder : public Circle
         {
              // check if we've been given an invalid height - less
             // than zero
-            if(height > 0)
+            if(height < 0)
             {
                 // throw an exception
-                throw invalid_argument("Radius must be greater than or equal to zero");
+                throw invalid_argument("Height must be greater than or equal to zero");
             }
             // initialize fields using provided arguments
             this->height = height;
@@ -68,4 +68,36 @@ class Cylinder : public Circle
         {
             height = this->height;
         }
+
+        // define the getter for the volume field
+        void getVolume(double& volume) const {
+            volume = this->volume;
+        
+        }
+
+        void compute() override{
+            double a;
+            this -> Circle::getArea(a);
+            volume = height * a;
+
+        }
+
+        void printCylinder(){
+            double a;
+            this->Circle::getArea(a);
+            int r;
+            this->Circle::getRadius(r);
+
+            cout << fixed << showpoint;
+            cout << setprecision(5);
+
+            cout << "radius= " << r << ", area =" << a << ", height= " << height << ", volume= " << volume << endl;
+        }
+
+        bool equalCylinder(const Cylinder& otherCylinder) const 
+        {
+            return (height == otherCylinder.height && 
+            volume == otherCylinder.volume);
+        }
+
 };
